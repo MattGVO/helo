@@ -11,9 +11,10 @@
 }
 
 .Login{
-  height: 500px;
-  width: 700px;
-  background-image: linear-gradient(99deg,#ff70a6,#ff9770 40%,#ffd670 73%,#e9ff70);
+  height: 550px;
+  width: 650px;
+  background-image: linear-gradient(97deg,#ff7a6e,#ffd670);
+  box-shadow: 0 14px 28px 0 rgba(0,0,0,.25), 0 10px 10px 0 rgba(0,0,0,.26);
   border-radius: 10px;
   display: flex;
   flex-direction: column;

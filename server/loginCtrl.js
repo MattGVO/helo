@@ -11,7 +11,7 @@ module.exports={
         let [createdUser] = await db.create_user([email, hash])
         req.session.user = createdUser
         console.log(createdUser);
-        res.status(200).send({message: 'Logged In'})
+        res.status(200).send({message: 'loggedIn'})
     },
     async login(req,res) {
         let { email, password } = req.body

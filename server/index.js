@@ -1,15 +1,17 @@
+require('dotenv').config
 const express = require('express');
 const bodyParser = require('body-parser');
-const massive = require('massive');
 const session = require('express-session');
+const massive = require('massive');
 const loginCtrl = require('./loginCtrl')
-require('dotenv').config
+
 const app = express();
-app.use(bodyParser.json())
 
 const { SESSION_SECRET, CONNECTION_STRING, SERVER_PORT } = process.env
 
 massive(CONNECTION_STRING).then( db => app.set('db', db) )
+
+app.use(bodyParser.json())
 
 app.use(session({
     secret: SESSION_SECRET,
