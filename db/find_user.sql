@@ -1,2 +1,2 @@
 select * from usertable
-where useremail = $1
+where useremail = $1;

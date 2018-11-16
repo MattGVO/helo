@@ -14,30 +14,35 @@ class Login extends Component {
   handleChange = e => {this.setState({ [e.target.name]: e.target.value });}
 
   async login() {
-    if(!this.state.email || this.state.password) return alert('Please fill out Email & password')
-    let result = await axios.post('/auth/login', {
-      email: this.state.email,
-      password: this.state.password
-    }) 
-
-    console.log(result)
-    if (result.data.message === 'loggedIn') {
-      this.props.history.push('/Dashboard')
-    }
-  }
-
-  async signup() {
-    if(!this.state.email || this.state.password) return alert('Please fill out Email & password')
-    let result = await axios.post('/auth/signup', {
-      email: this.state.email,
-      password: this.state.password
+    if (!this.state.email || !this.state.password) return alert('Please fill out Email AND Password')
+    let res = await axios.post('/auth/login', {
+        email: this.state.email,
+        password: this.state.password
     })
 
-    console.log(result)
-    if (result.data.message === 'loggedIn') {
-      this.props.history.push('/dashboard')
+    console.log(res)
+    if (res.data.message ==='loggedIn') {
+        this.props.history.push('/dashboard')
+    } else{
+        alert(res.data.message)
     }
-  }
+}
+
+async signup() {
+    if (!this.state.email || !this.state.password) return alert('Please fill out Email AND Password')
+    let res = await axios.post('/auth/signup', {
+        email: this.state.email,
+        password: this.state.password
+    })
+
+    console.log(res)
+    if (res.data.message ==='loggedIn') {
+        this.props.history.push('/dashboard')
+    } else{
+        alert(res.data.message)
+    }
+}
+      
 
   render() {
     console.log(this.state);
@@ -55,8 +60,8 @@ class Login extends Component {
               Password:
               <input name="password" type="password" onChange={this.handleChange}/>
             </p>
-            <button>Login</button>
-            <button>Register</button>
+            <button type="button" onClick={() =>{this.login()}}>Login</button>
+            <button type="button" onClick={() =>{this.signup()}}>Register</button>
           </form>
         </div>
       </div>
